@@ -6,12 +6,40 @@
   Go back
 </a>
 <div>
+
 <a href="/directors">
-  Delete
+  Delete director
 </a>
 </div> 
 
 <hr>
+
+<form action="insert_director" method="post">
+  <div>
+    <label for="name_field">Name</label>
+    <input id="name_field" type="text" name="the_name">
+  </div>
+
+  <div>
+    <label for="dob_field">Dob</label>
+    <input id="dob_field" type="date" name="the_dob">
+  </div>
+
+  <div>
+    <label for="bio_field">Bio</label>
+    <input id="bio_field" type="text" name="the_bio">
+  </div>
+
+  <div>
+    <label for="image_field">Image</label>
+    <input id="image_field" type="text" name="the_image">
+  </div>
+
+  <button >
+  Update director
+  </button>
+
+  <hr>
 
 <dl>
   <dt>
