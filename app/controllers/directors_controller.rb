@@ -48,9 +48,7 @@ class DirectorsController < ApplicationController
       
    redirect_to("/directors")
     
-      
   end
-end
 
   def destroy
     the_id = params.fetch("path_id")
@@ -75,6 +73,5 @@ end
     update_director.save
     
       redirect_to("/directors/#{update_director.id}")
-  
-  
   end
+end
