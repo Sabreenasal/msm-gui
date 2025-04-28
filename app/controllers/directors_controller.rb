@@ -37,43 +37,44 @@ class DirectorsController < ApplicationController
     render({ :template => "director_templates/eldest" })
   end
 
-  def update
-    the_id = params.fetch("path_id")
-    the_director = Director.where({ :id => the_id }).at(0)
-
-    the_director.name = params.fetch("query_name")
-    the_director.dob = params.fetch("query_dob")
-    the_director.bio = params.fetch("query_bio")
-    the_director.image = params.fetch("query_image_url")
-
-    if the_director.valid?
-      the_director.save
-      redirect_to("/directors/#{the_director.id}", { :notice => "Director updated successfully."})
-  else
-    redirect_to("/directors/#{the_director.id}", { :alert => the_director.errors.full_messages.to_sentence })
-  end
-end
-  
   def create
-    the_director = Director.new
-    the_director.name = params.fetch("query_name")
-    the_director.dob = params.fetch("query_dob")
-    the_director.bio = params.fetch("query_bio")
-    the_director.image = params.fetch("query_image_url")
+    create_new_director = Director.new
+    create_new_director.name = params.fetch("the_name")
+    create_new_director.dob = params.fetch("the_dob")
+    create_new_director.bio = params.fetch("the_bio")
+    create_new_director.image = params.fetch("the_image")
 
-    if the_director.valid?
-      the_director.save
-  redirect_to("/directors", { :notice => "Director created successfully." })
-    else
-      redirect_to("/directors", {:alert => the_director.errors.full_messages.to_sentence })
+      create_new_director.save
+      
+   redirect_to("/directors")
+    
+      
   end
 end
 
   def destroy
     the_id = params.fetch("path_id")
-    the_director = Director.where({ :id => the_id }).at(0)
+    matching_directors = Director.where({ :id => the_id })
 
+    the_director = matching_directors.at(0)
     the_director.destroy
     redirect_to("/directors")
   end
-end
+
+  def update
+    the_id = params.fetch("path_id")
+    
+    finding_directors = Director.where({ :id => the_id })
+    update_director = finding_directors.at(0)
+
+    update_director.name = params.fetch("the_name")
+    update_director.dob = params.fetch("the_dob")
+    update_director.bio = params.fetch("the_bio")
+    update_director.image = params.fetch("the_image")
+
+    update_director.save
+    
+      redirect_to("/directors/#{update_director.id}")
+  
+  
+  end

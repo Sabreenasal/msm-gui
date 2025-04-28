@@ -7,14 +7,15 @@
 </a>
 <div>
 
-<a href="/directors">
+<div>
+<a href="/delete_director/<%= @the_director.id %>">
   Delete director
 </a>
 </div> 
 
 <hr>
 
-<form action="insert_director" method="post">
+<form action="/update_director/<%= @the_director.id %>" method="post">
   <div>
     <label for="name_field">Name</label>
     <input id="name_field" type="text" name="the_name">
@@ -31,8 +32,8 @@
   </div>
 
   <div>
-    <label for="image_field">Image</label>
-    <input id="image_field" type="text" name="the_image">
+    <label for="image_box">Image</label>
+    <input id="image_box" type="text" name="the_image" value="<%= @the_director.image %>">
   </div>
 
   <button >
